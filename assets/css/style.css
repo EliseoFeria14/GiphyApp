@@ -8,5 +8,8 @@ h1{
 	font-style: bold;
 }
 .jumbotron{
-	background-color: #696969;
+	background-color: #03995d;
+}
+.topicButton{
+	margin: 0px 3px 0px 0px;
 }
