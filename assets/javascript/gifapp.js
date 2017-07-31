@@ -12,6 +12,7 @@ var topicsArray = ["Jurassic Park","The Mask", "Talladega Nights", "Anchorman","
              }
              buttonFill();
              searchbarArrayPusher();
+             $(document).on('click', ".topicButton",apiCaller);
           });
 //array with startup buttons
 
@@ -32,7 +33,7 @@ function buttonFill(){
 //build the api url and with reference to the array
 function apiCaller(){
 	var searchTopic = $(this).attr("data-Giphy");
-	var queryURL= "http://api.giphy.com/v1/gifs/search?q="+searchTopic+"&api_key=a41b79063a3144bcaf95cb7d86b8ae89limit=10";
+	var queryURL= "http://api.giphy.com/v1/gifs/search?q="+searchTopic+"&api_key=dc6zaTOxFJmzClimit=10";
 
 	$.ajax({
 		url: queryURL,
@@ -40,6 +41,22 @@ function apiCaller(){
 	})
 	.done(function(response){
 		var results = response.data;
+		console.log(response);
+		for (var j=0; j<11;j++){
+			var gifDiv= $('<div class="gifImg"');
+			
+			var gifRating= results[j].rating;
+			
+			var ratingLabel = $('<p>');
+			ratingLabel.text("Rating: "+gifRating);
+			
+			var gifIMG = $('<img>');
+			gifIMG.attr("src",results[j].images.fixed_height.url);
+			gifDiv.append(gifRating);
+			gifDiv.append(gifIMG);
+			$("#gifSpace").append(gifDiv);
+
+		}
 	})
 };
 //functions for pushing data from the search bar to the topicsArray
