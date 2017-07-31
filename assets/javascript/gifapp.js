@@ -14,7 +14,7 @@ var topicsArray = ["Jurassic Park","The Mask", "Talladega Nights", "Anchorman","
              searchbarArrayPusher();
              $(document).on('click', ".topicButton",apiCaller);
              $(document).on("click", ".animateGif",gifClickAnimate);
-             $(".animateGif").on("click",function(){
+             /*$(".animateGif").on("click",function(){
 					var state =(this).attr("data-state");
 
 					if(state === "still"){
@@ -24,7 +24,7 @@ var topicsArray = ["Jurassic Park","The Mask", "Talladega Nights", "Anchorman","
 						$(this).attr("src",$(this).attr("data-still"));
 						$(this).attr("data-state","still");
 					}
-				});
+				});*/
          	 });
 //array with startup buttons
 
@@ -67,7 +67,7 @@ function apiCaller(){
 			
 			var gifIMG = $('<img>');
 			gifIMG.addClass("animateGif")
-			gifIMG.attr("src",results[j].images.fixed_height.url);
+			gifIMG.attr("src",results[j].images.fixed_height_still.url);
 			gifIMG.attr("data-still",results[j].images.fixed_height_still.url);
 			gifIMG.attr("data-animate",results[j].images.fixed_height.url);
 			gifIMG.attr("data-state","still");
@@ -77,6 +77,8 @@ function apiCaller(){
 			gifDiv.append(ratingLabel.css({"color":"white", "font-weight":"bold", "text-shadow":"-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"}));
 			gifDiv.append(gifIMG);
 			$("#gifSpace").prepend(gifDiv);
+
+			gifAnimator();
 
 		}
 	})
@@ -89,13 +91,14 @@ function searchbarArrayPusher(){
 		topicsArray.push(newBtnTopic);
 		console.log(topicsArray);
 		buttonFill();
+		gifAnimator();
 		$('#topicInput').val("");
 	})
 };
 //click functions for gifs to start and stop
-/*function gifAnimator(){
+function gifAnimator(){
 	$(".animateGif").on("click",function(){
-		var state =(this).attr("data-state");
+		var state =$(this).attr("data-state");
 
 		if(state === "still"){
 			$(this).attr("src",$(this).attr('data-animate'));
@@ -106,6 +109,6 @@ function searchbarArrayPusher(){
 		}
 	})
 };
-*/
+
 
 
