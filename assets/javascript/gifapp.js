@@ -67,7 +67,7 @@ function apiCaller(){
 			
 			var gifIMG = $('<img>');
 			gifIMG.addClass("animateGif")
-			gifIMG.attr("src",results[j].images.fixed_height_still.url);
+			gifIMG.attr("src",results[j].images.fixed_height.url);
 			gifIMG.attr("data-still",results[j].images.fixed_height_still.url);
 			gifIMG.attr("data-animate",results[j].images.fixed_height.url);
 			gifIMG.attr("data-state","still");
@@ -106,7 +106,6 @@ function searchbarArrayPusher(){
 		}
 	})
 };
+*/
 
 
-
-//displaying the data retrieved from Giphy API onto the DOM
