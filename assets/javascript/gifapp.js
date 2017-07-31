@@ -51,14 +51,14 @@ function apiCaller(){
 			console.log(gifRating);
 
 			var ratingLabel = $('<p>');
-
+			ratingLabel.addClass("ratingFormat");
 			ratingLabel.text("Rating: "+gifRating);
 			
 			var gifIMG = $('<img>');
 			gifIMG.attr("src",results[j].images.fixed_height.url);
 			console.log(results[j].images.fixed_height.url);
 			
-			gifDiv.append(gifRating);
+			gifDiv.append(ratingLabel.css({"color":"white", "font-weight":"bold", "text-shadow":"-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"}));
 			gifDiv.append(gifIMG);
 			$("#gifSpace").prepend(gifDiv);
 
