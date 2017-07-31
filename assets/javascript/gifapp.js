@@ -14,7 +14,7 @@ var topicsArray = ["Jurassic Park","The Mask", "Talladega Nights", "Anchorman","
              searchbarArrayPusher();
              $(document).on('click', ".topicButton",apiCaller);
              $(document).on("click", ".animateGif",gifClickAnimate);
-             $(document).on("click",".animateGif",function(){
+             $(".animateGif").on("click",function(){
 					var state =(this).attr("data-state");
 
 					if(state === "still"){
@@ -93,7 +93,19 @@ function searchbarArrayPusher(){
 	})
 };
 //click functions for gifs to start and stop
-	
+/*function gifAnimator(){
+	$(".animateGif").on("click",function(){
+		var state =(this).attr("data-state");
+
+		if(state === "still"){
+			$(this).attr("src",$(this).attr('data-animate'));
+			$(this).attr("data-state",("animate"));
+		}else{
+			$(this).attr("src",$(this).attr("data-still"));
+			$(this).attr("data-state","still");
+		}
+	})
+};
 
 
 
