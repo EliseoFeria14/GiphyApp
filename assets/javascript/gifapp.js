@@ -13,18 +13,8 @@ var topicsArray = ["Jurassic Park","The Mask", "Talladega Nights", "Anchorman","
              buttonFill();
              searchbarArrayPusher();
              $(document).on('click', ".topicButton",apiCaller);
-             $(document).on("click", ".animateGif",gifClickAnimate);
-             /*$(".animateGif").on("click",function(){
-					var state =(this).attr("data-state");
-
-					if(state === "still"){
-						$(this).attr("src",$(this).attr('data-animate'));
-						$(this).attr("data-state",("animate"));
-					}else{
-						$(this).attr("src",$(this).attr("data-still"));
-						$(this).attr("data-state","still");
-					}
-				});*/
+             $(document).on("click", ".animateGif",gifAnimator);
+             
          	 });
 //array with startup buttons
 
@@ -78,8 +68,6 @@ function apiCaller(){
 			gifDiv.append(gifIMG);
 			$("#gifSpace").prepend(gifDiv);
 
-			gifAnimator();
-
 		}
 	})
 };
@@ -91,13 +79,13 @@ function searchbarArrayPusher(){
 		topicsArray.push(newBtnTopic);
 		console.log(topicsArray);
 		buttonFill();
-		gifAnimator();
+		
 		$('#topicInput').val("");
 	})
 };
 //click functions for gifs to start and stop
 function gifAnimator(){
-	$(".animateGif").on("click",function(){
+	
 		var state =$(this).attr("data-state");
 
 		if(state === "still"){
@@ -107,8 +95,7 @@ function gifAnimator(){
 			$(this).attr("src",$(this).attr("data-still"));
 			$(this).attr("data-state","still");
 		}
-	})
-};
+	};
 
 
 
