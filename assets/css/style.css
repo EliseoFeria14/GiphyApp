@@ -1,6 +1,10 @@
 body{
 	background-image: url("https://www.walldevil.com/wallpapers/a38/wallpaper-fun-art-minimalist-desktop-helicopter-threadless-minimalistic-bears-helicopters-tanks-panda-wallpapers-animal.jpg");
 	background-size: 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;}
 }
 h1{
 	color:white;
