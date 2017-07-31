@@ -13,7 +13,19 @@ var topicsArray = ["Jurassic Park","The Mask", "Talladega Nights", "Anchorman","
              buttonFill();
              searchbarArrayPusher();
              $(document).on('click', ".topicButton",apiCaller);
-          });
+             $(document).on("click", ".animateGif",gifClickAnimate);
+             $(document).on("click",".animateGif",function(){
+					var state =(this).attr("data-state");
+
+					if(state === "still"){
+						$(this).attr("src",$(this).attr('data-animate'));
+						$(this).attr("data-state",("animate"));
+					}else{
+						$(this).attr("src",$(this).attr("data-still"));
+						$(this).attr("data-state","still");
+					}
+				});
+         	 });
 //array with startup buttons
 
 //button rendering funtion
@@ -51,11 +63,15 @@ function apiCaller(){
 			console.log(gifRating);
 
 			var ratingLabel = $('<p>');
-			ratingLabel.addClass("ratingFormat");
 			ratingLabel.text("Rating: "+gifRating);
 			
 			var gifIMG = $('<img>');
-			gifIMG.attr("src",results[j].images.fixed_height.url);
+			gifIMG.addClass("animateGif")
+			gifIMG.attr("src",results[j].images.fixed_height_still.url);
+			gifIMG.attr("data-still",results[j].images.fixed_height_still.url);
+			gifIMG.attr("data-animate",results[j].images.fixed_height.url);
+			gifIMG.attr("data-state","still");
+
 			console.log(results[j].images.fixed_height.url);
 			
 			gifDiv.append(ratingLabel.css({"color":"white", "font-weight":"bold", "text-shadow":"-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"}));
@@ -76,7 +92,9 @@ function searchbarArrayPusher(){
 		$('#topicInput').val("");
 	})
 };
-//click functions for buttons
-//$("document").on(click)
+//click functions for gifs to start and stop
+	
+
+
 
 //displaying the data retrieved from Giphy API onto the DOM
