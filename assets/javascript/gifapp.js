@@ -33,28 +33,34 @@ function buttonFill(){
 //build the api url and with reference to the array
 function apiCaller(){
 	var searchTopic = $(this).attr("data-Giphy");
-	var queryURL= "http://api.giphy.com/v1/gifs/search?q="+searchTopic+"&api_key=dc6zaTOxFJmzClimit=10";
+	var queryURL= "https://api.giphy.com/v1/gifs/search?api_key=a0016b43bb05415d883b051cc36af24c&q="+searchTopic+"&limit=10";
 
 	$.ajax({
 		url: queryURL,
 		method: "GET"
 	})
 	.done(function(response){
+		$('#gifSpace').empty();
 		var results = response.data;
 		console.log(response);
-		for (var j=0; j<11;j++){
-			var gifDiv= $('<div class="gifImg"');
+
+		for (var j=0; j<results.length;j++){
+			var gifDiv= $('<div>"');
 			
 			var gifRating= results[j].rating;
-			
+			console.log(gifRating);
+
 			var ratingLabel = $('<p>');
+
 			ratingLabel.text("Rating: "+gifRating);
 			
 			var gifIMG = $('<img>');
 			gifIMG.attr("src",results[j].images.fixed_height.url);
+			console.log(results[j].images.fixed_height.url);
+			
 			gifDiv.append(gifRating);
 			gifDiv.append(gifIMG);
-			$("#gifSpace").append(gifDiv);
+			$("#gifSpace").prepend(gifDiv);
 
 		}
 	})
