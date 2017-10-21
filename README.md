@@ -8,7 +8,7 @@ https://eliseoferia14.github.io/GiphyApp/
 
 and have fun typing random things and seeing what pops up!
 
-##Built With
+## Built With
 *HTML
 *CSS
 *Javascript
